@@ -11,10 +11,10 @@ from bs4 import BeautifulSoup
 
 load_dotenv()
 # Modify the following to be included at the top of the letter
-NAME = "Jannis Grimm"
-PHONE = "480-937-7321"
-EMAIL = "jannis@grimm.me"
-ADDRESS = "707 S Forest Ave, Tempe, AZ, 85281"
+NAME = ""
+PHONE = ""
+EMAIL = ""
+ADDRESS = ""
 
 def read_pdf(file_path):
     """Reads content from a PDF file using the updated PyPDF2 library."""
