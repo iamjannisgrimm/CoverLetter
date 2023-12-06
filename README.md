@@ -5,7 +5,7 @@ This Python script automatically tailors cover letters for specific job applicat
 ## Features
 
 - Reads existing cover letter and resume in PDF format.
-- Tailors the cover letter based on user inputs for the company name, position, and job description.
+- Tailors the cover letter based on the url of the job descrioption or user inputs for the company name, position, and job description.
 - Utilizes OpenAI's GPT-4 model for intelligent and context-aware text generation.
 - Saves the tailored cover letter as a PDF with a professional layout.
 
@@ -14,12 +14,12 @@ This Python script automatically tailors cover letters for specific job applicat
 ### Prerequisites
 
 - Python 3.x
-- Install required Python libraries: `openai`, `PyPDF2`, `python-dotenv`, `reportlab`
+- Install required Python libraries: `openai`, `PyPDF2`, `python-dotenv`, `reportlab`, 'bs4'
 
 You can install these with the following command:
 
 ```bash
-pip install openai PyPDF2 python-dotenv reportlab
+pip install openai PyPDF2 python-dotenv reportlab bs4
 ```
 ### Environment Variables
 Set up an environment variable for the OpenAI API key. You can get an API key by signing up at OpenAI.
@@ -38,9 +38,10 @@ Run the script:
 ```bash
 python main.py
 ```
-Follow the prompts in the command line to input the company's name, the position you're applying for, and the job description. Type 'END' to finish the job description input.
+Follow the prompts in the command line to input the company's name, the position you're applying for, and the job description or simply paste the link where the position is listed for automatic entry.
 The script will generate a tailored cover letter and save it as a PDF in your Downloads folder or the specified path.
-Customization
+
+## Customization
 
 Modify the script to change the PDF formatting, line spacing, and other parameters.
 Update the generate_cover_letter function to change how the cover letter is tailored.
