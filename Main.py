@@ -65,7 +65,6 @@ def generate_cover_letter(existing_content, resume, company, position, descripti
                 {"role": "user", "content": user_message}
             ]
         )
-
         return response.choices[0].message['content']
 
     except Exception as e:
