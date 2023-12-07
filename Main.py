@@ -11,10 +11,10 @@ from bs4 import BeautifulSoup
 
 load_dotenv()
 # Modify the following to be included at the top of the letter
-NAME = ""
-PHONE = ""
-EMAIL = ""
-ADDRESS = ""
+NAME = "Jannis Grimm"
+PHONE = "(480) 937-7321"
+EMAIL = "jannis@grimm.me"
+ADDRESS = "707 S Forest Ave"
 
 def read_pdf(file_path):
     """Reads content from a PDF file using the updated PyPDF2 library."""
@@ -39,9 +39,10 @@ def generate_cover_letter(existing_content, resume, company, position, descripti
                 f"Highlight relevant skills and experiences, and ensure the cover letter is engaging and concise."
                 f"Don't ever make up anything you don't know about me. "
                 f"Keep the letter nice and short and concise. "
+                f"My full name at the very end must ALWAYS be on a separate line closing the document"
                 f"Make sure to include a blank line every time a new paragraph starts. "
                 f"Make sure it is the best cover letter ever so that they instantly want to hire me. And make sure it is complete as in ready to submit as is."
-                f"Do not include contact information and make sure my signature at the very end is on a separate line."
+                f"Do not include contact information"
             )
         else:
             # Manual approach with individual details
@@ -61,7 +62,7 @@ def generate_cover_letter(existing_content, resume, company, position, descripti
         response = openai.ChatCompletion.create(
             model="gpt-4-1106-preview",
             messages=[
-                {"role": "system", "content": "You just tailor cover letters. You never exceed 310 words."},
+                {"role": "system", "content": "You just tailor cover letters. You never exceed 320 words."},
                 {"role": "user", "content": user_message}
             ]
         )
@@ -163,10 +164,10 @@ def main():
         print("Generating tailored cover letter... Please wait.")
         tailored_cover_letter = generate_cover_letter(cover_letter_content, resume_content, company, position, description, "")
 
-    current_date = datetime.now().strftime("%s/%h/%m/%d/%Y")
+    current_date = datetime.now().strftime("%s-%h-%m-%d-%Y")
     print("Cover letter generation complete.")
-    save_to_pdf(tailored_cover_letter, f"CoverLetter_{company if url.lower() == 'no' else 'AUTO'}.pdf")
-    print(f"Cover letter saved as 'CoverLetter_{company if url.lower() == 'no' else 'AUTO'}.pdf'")
+    save_to_pdf(tailored_cover_letter, f"CoverLetter_{company if url.lower() == 'no' else current_date}.pdf")
+    print(f"Cover letter saved as 'CoverLetter_{company if url.lower() == 'no' else current_date}.pdf")
 
 if __name__ == "__main__":
     main()
